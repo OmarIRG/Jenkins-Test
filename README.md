@@ -45,6 +45,12 @@ Before setting up the project, ensure you have the following:
 - **Jenkins**: Installed and running on your server.
 - **Docker**: Installed on both your Jenkins server and any server where you plan to deploy the container.
 - **Git**: To clone the repository and manage code versions.
+- Setting Up Docker Hub Credentials in Jenkins
+Add Credentials:
+
+Go to Manage Jenkins → Manage Credentials.
+Add Username with password for Docker Hub.
+Set an ID like docker-hub-credentials.
 
 ### Repository Structure
 
