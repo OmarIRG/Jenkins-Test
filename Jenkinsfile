@@ -18,5 +18,13 @@ pipeline {
                 }
             }
         }
+        stage('Run Docker Container') {
+            steps {
+                // Stop and remove any existing container with the same name
+                sh "docker stop nginx-container || true && docker rm nginx-container || true"
+                // Run the Nginx container using the built image
+                sh "docker run -d --name nginx-container -p 1000:80 omarirg/my-repo:${DOCKER_IMAGE_TAG}"
+            }
+        }
     }
 }
