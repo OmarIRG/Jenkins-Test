@@ -6,17 +6,13 @@ pipeline {
     stages {
         stage('Build Docker Image') {
             steps {
-                script {
-                    docker.build("my-app:${params.DOCKER_IMAGE_TAG}")
-                }
+                sh "docker build -t my-app:${DOCKER_IMAGE_TAG} ."
             }
         }
         stage('Push Docker Image') {
             steps {
-                script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-                        docker.image("my-app:${params.DOCKER_IMAGE_TAG}").push()
-                    }
+                withDockerRegistry([url: 'https://registry.hub.docker.com', credentialsId: 'docker-hub-credentials']) {
+                    sh "docker push my-app:${DOCKER_IMAGE_TAG}"
                 }
             }
         }
