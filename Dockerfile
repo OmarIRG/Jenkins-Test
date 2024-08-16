@@ -7,5 +7,8 @@ COPY index.html /usr/share/nginx/html/index.html
 # Expose port 80 to the outside world
 EXPOSE 80
 
+# Expose port 80 to the outside world
+EXPOSE 1000
+
 # Start Nginx when the container starts
 CMD ["nginx", "-g", "daemon off;"]
